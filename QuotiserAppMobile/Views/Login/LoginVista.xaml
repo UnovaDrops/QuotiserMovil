@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    x:Class="QuotiserAppMobile.Views.Login.LoginVista"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:QuotiserAppMobile.Controls"
+    xmlns:local3="clr-namespace:ImageResourceExtension"    
+    BackgroundColor="WhiteSmoke"
+    
+    NavigationPage.HasNavigationBar="False">
+
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="{local3:ImageResource QuotiserAppMobile.images.FondoQuotiser.jpg}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"
+               Aspect="Fill"></Image>
+            <Grid RowSpacing="3" VerticalOptions="StartAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <FlexLayout Direction="Column"
+                            JustifyContent="SpaceEvenly">
+
+                    <Image  Grid.Row="0" Aspect="Fill" VerticalOptions="CenterAndExpand" Margin="15,100,15,0"   HeightRequest="100" Source="{local3:ImageResource QuotiserAppMobile.images.Quotiser_Logo_White.png}">
+                    </Image>
+
+
+                    <ActivityIndicator  Grid.Row="1" x:Name="IndicatorLogin" IsRunning="False" HorizontalOptions="Center" Color="#0098ee"></ActivityIndicator>
+
+                    <Label
+                        Grid.Row="2"
+                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                        FontSize="20"
+                        x:Name="BienvenidoQuotiser"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="¡Welcome to Quotiser!"
+                        TextColor="Black" />
+
+
+                    <Label
+                        Grid.Row="3"
+                        Margin="0,8"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"
+                        x:Name="PorfavorInicia"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Please Login"
+                        TextColor="Black" />
+
+
+                    <border:SfBorder
+                        Grid.Row="4"
+                        Margin="15,0,15,0"  
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="Black"
+                        Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessEntry
+                            x:Name="CapturaEmail"
+                            Keyboard="Default"
+                            Placeholder="Email"
+                            PlaceholderColor="{DynamicResource Gray-700}"
+                            Style="{StaticResource EntryStyle}"
+                            Text=""
+                            TextColor="{DynamicResource Gray-900}" />
+                    </border:SfBorder>
+
+                    <Label Grid.Row="5" />
+
+
+                    <!--  Entry to get password from user  -->
+                    <border:SfBorder
+                        Grid.Row="6"
+                        Margin="15,0,15,0"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="Black"
+                        Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessEntry
+                            x:Name="CapturaContraseña"
+                            IsPassword="True" Keyboard="Default"
+                            Placeholder="Password"
+                            PlaceholderColor="{DynamicResource Gray-700}"
+                            Style="{StaticResource EntryStyle}"
+                            TextColor="{DynamicResource Gray-900}" />
+                    </border:SfBorder>
+
+
+                    <!--  Login button  -->
+                    <buttons:SfButton
+                        Grid.Row="7"
+                        Margin="25,25,25,0"                                                
+                        Text="LOGIN" 
+                        x:Name="IniciarSesionBotonTexto"
+                        Clicked="IniciarSesionBoton"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="16"
+                        BackgroundColor="#0098ee"                       
+                        CornerRadius="20"
+                        HeightRequest="40"/>
+
+                    <StackLayout>
+                        <buttons:SfCheckBox HorizontalOptions="Center" Margin="0,15,0,0"  BorderWidth="3"            
+                            FontFamily="{StaticResource Montserrat-Medium}"  CheckedColor="#0098ee" TextColor="Black" x:Name="radioButton"  Text="Remember password"/>
+                    </StackLayout>
+
+
+                    <buttons:SfButton
+                        Grid.Row="9"
+                        Margin="0,2"
+                        x:Name="NoTienesCuenta"
+                        Clicked="Registro"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"                       
+                        BackgroundColor="Transparent"
+                        Text="Don't you have an account? Sign up here"
+                        TextColor="{DynamicResource FacebookLogin}" />
+
+                    <buttons:SfButton
+                        Grid.Row="10"
+                        Margin="0,2,0,0"
+                        x:Name="RecuperarContraseña"
+                        Clicked="RecuperarContraseñas"
+                        BackgroundColor="Transparent"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"                       
+                        Text="Forgot your password? click here"
+                        TextColor="{DynamicResource FacebookLogin}" />
+
+
+
+                    <Label
+                        Margin="0,16,0,16"
+                        Grid.Row="11"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Copyright © Quotiser VER 1.2"
+                        TextColor="Black"
+                        />
+                </FlexLayout>
+
+
+            </Grid>
+        </RelativeLayout>
+
+    </ContentPage.Content>
+</ContentPage>

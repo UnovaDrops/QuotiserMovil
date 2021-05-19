@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:drawable="@drawable/quotisersplashart" />
+			
+	<item>
+		<bitmap android:src="@drawable/Quotiser_Logo_White"
+				android:tileMode="disabled"				
+				android:gravity="center"/>
+	</item>
+</layer-list>

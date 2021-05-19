@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Visual="Material"             
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"                       
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:viewModel="clr-namespace:QuotiserAppMobile.ViewModels"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="QuotiserAppMobile.Views.Panel.PanelVista"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"           
+             xmlns:local3="clr-namespace:ImageResourceExtension"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+             xmlns:MicroCharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Name="healthCarePage"
+             
+             NavigationPage.HasNavigationBar="false"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true">
+
+    <ContentPage.BindingContext>
+        <viewModel:PanelViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" IsOpen="{Binding CloseOpen}" >
+        <navigationdrawer:SfNavigationDrawer.ContentView  >
+            <StackLayout x:Name="rootLayout" Spacing="0">
+                <!--  Title View  -->
+                <Grid BackgroundColor="#0098ee" HeightRequest="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <buttons:SfButton       
+                        Grid.Column="0"
+                        BackgroundColor="#0098ee"
+                                
+                                Clicked="BotonMenu"                            
+                                HorizontalOptions="Start"                                
+                                BackgroundImage="{local3:ImageResource QuotiserAppMobile.images.botonmenublanco.png}"
+                                HeightRequest="20" WidthRequest="30"
+                                Margin="15,15,0,15"/>
+                    
+                    <Label Grid.Column="1" Text="{Binding TituloDashboard}"
+                        x:Name="TituloDashboard"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        
+                        TextColor="White"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="14">
+
+                    </Label>
+
+                    <border:SfBorder BorderColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,15,5">
+                        <Image HeightRequest="40" WidthRequest="40" Source="{local3:ImageResource QuotiserAppMobile.images.WhitelogoQ.png}"></Image>
+                    </border:SfBorder>
+                </Grid>
+               
+
+                <RefreshView IsRefreshing ="{Binding IsRefreshing}"  RefreshColor = "Red"    
+                    Command = "{Binding RefreshViewCommand}" >
+                    <ScrollView>
+                        
+                            <StackLayout Spacing="0" Margin="0" Padding="8" Orientation="Vertical" >
+                                <Image Margin="5,0,5,10" Source="{Binding Banner}"></Image>
+                                <listView:SfListView SelectionMode="None" IsScrollingEnabled="False" ItemSpacing="4" ItemSize="90" ItemsSource="{Binding ListItems}">
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <cards:SfCardView CornerRadius="10" IndicatorColor="{Binding BackgroundGradientStart}" IndicatorPosition="Left" IndicatorThickness="8">
+                                                <Grid >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />                            
+                                                    </Grid.RowDefinitions>
+                                                    <Image WidthRequest="80" HeightRequest="80" Grid.Row="0" Grid.Column="1" Margin="0,3,0,0" VerticalOptions="Center" HorizontalOptions="Start" Source="{Binding Icono}"></Image>
+                                                    <Label  Grid.Column="3" Grid.Row="0" FontSize="16" Margin="0,3,15,0" Style="{StaticResource LabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text="{Binding CostoTotal}"></Label>
+                                                    <Label Grid.Column="2" Text="{Binding TextoInferior}"  Grid.Row="0" Margin="0,3,0,0"  FontSize ="10" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource LabelStyle}"></Label>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                        </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
+                                <Label
+                                Grid.Row="0"
+                                FontFamily="{StaticResource Montserrat-Medium}"
+                                HorizontalTextAlignment="Center"
+                                x:Name="AcumuladosPorMes"
+                                Style="{StaticResource LabelStyle}"
+                                Text="{Binding AcumuladosPorMes}"
+                               
+                                TextColor="Black"
+                            />
+                                <Label Grid.Row="1" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button  BackgroundColor="#28D808" x:Name="Aceptado" Grid.Column="1" Text="{Binding Aceptado}" TextColor="White"/>
+                                    <Button  BackgroundColor="#E70C0C" x:Name="Cancelado" Grid.Column="0" Text="{Binding Cancelado}" TextColor="White"/>
+                                </Grid>
+                                <ActivityIndicator x:Name="IndicatorCarga" VerticalOptions="Center" HorizontalOptions="Center" IsRunning="true" IsVisible="true" Margin="0,60,0,0" HeightRequest="80" WidthRequest="80" Color="#0098ee"></ActivityIndicator>
+                                <MicroCharts:ChartView x:Name="GraficasBarras" HeightRequest="300" ></MicroCharts:ChartView>
+                                
+                            </StackLayout>
+                            
+                        
+                    </ScrollView>
+                </RefreshView>
+            </StackLayout>
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+       
+
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <Grid BackgroundColor="#0098ee">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Image Source="{local3:ImageResource QuotiserAppMobile.images.WhitelogoQ.png}" 
+                       HeightRequest="90" WidthRequest="90"
+                       Margin="0,20,0,0" 
+                       BackgroundColor="#0098ee" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center"/>
+                <Label Text="Nombre Usuario" 
+                       FontFamily="{StaticResource Montserrat-Medium}"
+                       Grid.Row="1" 
+                       x:Name="NombreUsuario"
+                       HorizontalTextAlignment="Center" 
+                       HorizontalOptions="Center" 
+                       FontSize="24" 
+                       TextColor="White"/>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+        <navigationdrawer:SfNavigationDrawer.DrawerContentView  >
+            <StackLayout BackgroundColor="WhiteSmoke" Margin="0" Spacing="0" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                        <listView:SfListView IsScrollingEnabled="False"  Grid.Row="1" ItemSpacing="0" ItemSize="55" x:Name="listView" 
+                        BackgroundColor="Transparent"  ItemsSource="{Binding ListaMenu}" TapCommand="{Binding SelectMenu}" SelectionBackgroundColor="Transparent">
+                        <listView:SfListView.ItemTemplate >
+                            <DataTemplate >
+                                <ViewCell >
+                                    
+                                        <Frame x:Name="frame" HasShadow="True" Padding="2" Margin="2">
+                                        <syncEffectsView:SfEffectsView CornerRadius="10,10,10,10" ShouldIgnoreTouches="True" >
+                                            <StackLayout HeightRequest="0"  Margin="0" Spacing="0">
+                                            
+                                                <Grid HeightRequest="48" Margin="10,0,10,0" ColumnSpacing="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Image Source="{Binding icon}" 
+                                                  HeightRequest="30" WidthRequest="30"
+                                                   Margin="0,0,0,0" 
+                                                   BackgroundColor="Transparent" 
+                                                   VerticalOptions="Center"
+                                                   Grid.Column="0"
+                                                   HorizontalOptions="Start"/>
+
+
+                                                    <Label Margin="0,0,0,0" Text="{Binding MenuTitle}"  FontSize="18" FontFamily="{StaticResource Montserrat-Medium}" 
+                                                TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
+
+                                                </Grid>
+                                            
+
+                                            </StackLayout>
+                                        </syncEffectsView:SfEffectsView>
+                                    </Frame>
+                                    
+                                </ViewCell>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
+                    
+
+
+                    <buttons:SfButton Grid.Row="2"
+                                                        
+                                                        Margin="15,10,15,10"                                                                                                                                                                                                                             
+                                                        IsVisible="false"
+                                                        Text="Quote"
+                                                        VerticalOptions="Start"                                                        
+                                                        BackgroundColor="{DynamicResource FacebookBlue}" 
+                                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                                        FontSize="20"                                                        
+                                                        CornerRadius="20"                                                        
+                                                        HeightRequest="60"/>
+                   
+
+                </Grid>
+                
+              
+            </StackLayout>
+        </navigationdrawer:SfNavigationDrawer.DrawerContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerFooterView  >
+            <StackLayout BackgroundColor="WhiteSmoke" Margin="0" Spacing="0" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                       
+                    </Grid.RowDefinitions>
+
+                    
+                   
+                    <buttons:SfButton Grid.Row="1"
+                                                        
+                                                        Margin="15,80,15,0"                                                                                                                                                                                                                             
+                                                        Clicked="BotonLogOut"
+                                                        Text="{Binding CerrarSesionTexto}"
+                                                        VerticalOptions="End"                                                        
+                                                        BackgroundColor="OrangeRed" 
+                                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                                        FontSize="15"                                                        
+                                                        CornerRadius="20"  
+                                                        x:Name="CerrarSesionTexto"
+                                                        HeightRequest="40"/>
+
+                </Grid>
+
+
+            </StackLayout>
+        </navigationdrawer:SfNavigationDrawer.DrawerFooterView>
+    </navigationdrawer:SfNavigationDrawer>
+    
+
+</ContentPage>

@@ -1,0 +1,30 @@
+
+
+Date:2020-12-23 10:48:06,387
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Xamarin.UI.MainViewModel                         [(null)]
+Message:Microsoft.VisualStudio.ProjectSystem.NameCollisionException: El archivo con el nombre 'PaymentSuccess.svg' ya forma parte del proyecto. Asigne un nombre único al elemento que va a agregar o elimine primero el elemento existente.
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.ProjectNode.RunWizard(SimpleHierarchyNode parentNode, String itemName, String wizardToRun, IntPtr dlgOwner)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.ProjectNode.<AddItemWithSpecificAsync>d__613.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.Automation.OAProjectItems.<>c__DisplayClass1_0.<<AddFromTemplate>b__0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.Automation.OAProject.<>c__DisplayClass72_0`1.<<Mutate>b__0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.ProjectNode.<>c__DisplayClass571_0.<<Mutate>b__0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Microsoft.VisualStudio.Threading.JoinableTask.CompleteOnCurrentThread()
+   en Microsoft.VisualStudio.ProjectSystem.ProjectMultiThreadedService.ExecuteSynchronously(Func`1 asyncAction)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.ProjectNode.Mutate(Func`1 asyncAction, Boolean includesFileSystemChange, String telemetryActivity)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.Automation.OAProject.Mutate[T](Func`1 asyncAction, Boolean includesFileSystemChange, String telemetryActivity)
+   en Microsoft.VisualStudio.ProjectSystem.VS.Implementation.Package.Automation.OAProjectItems.AddFromTemplate(String fileName, String name)
+   en Syncfusion.Xamarin.UI.MainWindow.AddItem_Click(Object sender, RoutedEventArgs e)

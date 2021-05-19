@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QuotiserAppMobile.Views.Login.SeleccionarCompañiaVista"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"  
+    xmlns:converter="clr-namespace:QuotiserAppMobile.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"    
+    xmlns:local3="clr-namespace:ImageResourceExtension"
+    BackgroundColor="Black"      
+    BackgroundImageSource="{local3:ImageResource QuotiserAppMobile.images.FondoQuotiser.jpg}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--  Binding context for login page  -->
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="Center">
+            <ScrollView.VerticalOptions>
+                <OnIdiom
+                    x:TypeArguments="LayoutOptions"
+                    Default="CenterAndExpand"
+                    Phone="FillAndExpand" />
+            </ScrollView.VerticalOptions>
+
+            <StackLayout
+                Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                             PhoneLandscape='150,32',
+                                                             TabletPortrait='200,50',
+                                                             TabletLandscape='300,50',
+                                                             Desktop='30'}"
+                Spacing="0"
+                VerticalOptions="FillAndExpand"
+                >
+                <Grid RowSpacing="100">
+                    <Image  Grid.RowSpan="3" VerticalOptions="CenterAndExpand" HeightRequest="100" Source="{local3:ImageResource QuotiserAppMobile.images.Quotiser_Logo_White.png}">
+                    </Image>
+                </Grid>
+
+                    <Grid RowSpacing="3" VerticalOptions="StartAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator  Grid.Row="0" x:Name="IndicatorCompañia" IsRunning="False" HorizontalOptions="Center" Color="Red"></ActivityIndicator>
+
+
+
+                    <!--  Label to display the title of this page  -->
+                    <Label
+                        x:Name="SeleccionarCompañia"
+                        Grid.Row="1"
+                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="¡Please select your corresponding company !"
+                        TextColor="Black" />
+
+                    <Label Grid.Row="2" />
+
+                    <Picker Grid.Row="3" x:Name="PickerCompany" SelectedIndexChanged="PickerChangeCompany"  TextColor="Black" Title="             -Select your company-" TitleColor="Black"></Picker>
+                    
+                    <Label Grid.Row="4" />
+
+                    <!--  Login button  -->
+                    <buttons:SfButton
+                        Grid.Row="5"
+                        Margin="0,16,0,16"                       
+                        x:Name="SeleccionarCompañiaBoton"
+                        Text="To Select" 
+                        Clicked="SelectCompany"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="16"
+                        BackgroundColor="{DynamicResource FacebookBlue}"                       
+                        CornerRadius="20"
+                        HeightRequest="40"/>
+                    
+                    
+
+                    <Label
+                        Grid.Row="6"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Copyright © Quotiser VER 1.2"
+                        TextColor="Black"
+                        />
+
+                </Grid>
+
+               
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:QuotiserAppMobile.Controls;assembly=QuotiserAppMobile"          
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"                       
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:viewModel="clr-namespace:QuotiserAppMobile.ViewModels"   
+             xmlns:local3="clr-namespace:ImageResourceExtension"
+             x:Class="QuotiserAppMobile.Views.PorEnviar.PorEnviarVista"          
+             x:Name="healthCarePage"
+             BackgroundColor="WhiteSmoke"
+             
+             Style="{StaticResource ContentPageStyle}"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true">
+
+    <ContentPage.BindingContext>
+        <viewModel:PorEnviarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StylesPorEnviar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:Name="rootLayout" Spacing="0">
+            <Grid BackgroundColor="#0098ee" HeightRequest="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <buttons:SfButton 
+                            x:Name="BackButton"
+                            Margin="15,0,0,0"
+                            Grid.Column="0"
+                            CornerRadius="0"
+                            HeightRequest="40" WidthRequest="40"
+                            Clicked="BotonDeRetroceso"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Start"                           
+                />
+
+                <Label Grid.Column="1" Text="{Binding TituloSend}"
+                        VerticalOptions="Center"
+                        x:Name="TituloSend"
+                        HorizontalOptions="Center"                        
+                        TextColor="White"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="14">
+                </Label>
+                <border:SfBorder BorderColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,15,5">
+                    <Image HeightRequest="40" WidthRequest="40" x:Name="UserImage"></Image>
+                </border:SfBorder>
+            </Grid>
+
+            <RefreshView IsRefreshing ="{Binding IsRefreshing}"  RefreshColor = "Red"    
+                    Command = "{Binding RefreshViewCommand}" >
+                <ScrollView>
+
+                    <StackLayout Spacing="0" Margin="0" Padding="8" >
+                        <Image Margin="5,0,5,10" Source="{Binding Banner}"></Image>
+                        <Grid RowSpacing="0" x:Name="TablaVisible" IsVisible="false">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackLayout x:Name="TitleView"  Padding="8,8" Grid.Row="0" HeightRequest="40" 
+                         BackgroundColor="{DynamicResource Gray-White}" Spacing="0"
+                         HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+                                <StackLayout x:Name="Title" HorizontalOptions="FillAndExpand"  
+                             Orientation="Horizontal"  VerticalOptions="FillAndExpand"  Spacing="0">
+
+                                    <!--  Back button command  -->
+                                    <buttons:SfButton  x:Name="backButton"  Command="{Binding BackButtonCommand}"
+                                       CommandParameter="{x:Reference backButton}" CornerRadius="3"
+                                       Style="{StaticResource IconButtonStyle}" Text="{StaticResource Back}"/>
+
+                                    <!--   Data table page Title  -->
+                                    <Label  Margin="16,0" FontFamily="{StaticResource Montserrat-Medium}" FontSize="16"
+                            HorizontalOptions="CenterAndExpand" TextColor="{DynamicResource Gray-900}" x:Name="TituloBarraBusqueda"
+                            LineHeight="1.25"  Text="{Binding TituloBarraBusqueda}"  VerticalOptions="Center" VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+
+                                <StackLayout  x:Name="Search" HorizontalOptions="EndAndExpand" IsVisible="False"
+                                Orientation="Horizontal" Spacing="0">
+
+                                    <!--  Back to title layout  -->
+                                    <buttons:SfButton x:Name="BackToTitle" Clicked="BackToTitle_Clicked"  Text="{StaticResource Back}"
+                                      Style="{StaticResource NavigationBarButtonStyle}" />
+
+                                    <!--  Rounded Search Entry  -->
+                                    <border:SfBorder Style="{DynamicResource SfBorderStyle}" BorderColor="Transparent">
+                                        <controls:BorderlessEntry x:Name="SearchEntry"  BindingContext="{x:Reference dataTable}"
+                                                  Text="{Binding SearchText, Mode=TwoWay}" Placeholder=""
+                                                  HorizontalOptions="FillAndExpand"  Style="{StaticResource SearchEntryStyle}"/>
+                                    </border:SfBorder>
+                                </StackLayout>
+
+                                <!--  Search Button  -->
+                                <buttons:SfButton  x:Name="SearchButton" IsVisible="True" Clicked="SearchButton_Clicked" Style="{StaticResource IconButtonStyle }"
+                                   Text="{StaticResource Search}" />
+                            </StackLayout>
+
+                            <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}" IsVisible="{Binding TablaVisible}"/>
+
+                            <StackLayout Grid.Row="4" Spacing="0" >
+
+                                <controls:SearchableDataTable  x:Name="dataTable"
+                                    Padding="0"
+                                    AutoFitMode="Height"
+                                    IsScrollBarVisible="false"
+                                    ItemSpacing="0"
+                                    ItemsSource="{Binding Items}"
+                                    SearchText="{Binding SearchText}"
+                                    SelectionBackgroundColor="Transparent"
+                                    TapCommand="{Binding ItemTappedCommand}"
+                                    VerticalOptions="FillAndExpand"
+                                    StickyFooterPosition="Body">
+
+                                    <controls:SearchableDataTable.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid Grid.Row="2" HeightRequest="48" Margin="0,0,0,0" Padding="16,0,8,0" ColumnSpacing="0" BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="80" />
+                                                    <ColumnDefinition Width="80" />
+                                                    <ColumnDefinition Width="70" />
+                                                    <ColumnDefinition Width="60" />
+                                                    <ColumnDefinition Width="80" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="#" HorizontalOptions="Center"  FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"/>
+
+                                                <Label Grid.Column="1" HorizontalOptions="Center"  Text="{Binding Source = {x:Static viewModel:PorEnviarViewModel.NombreProyecto}}"  FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}"                                                      
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"  />
+
+                                                <Label  Grid.Column="2" HorizontalOptions="Center" Text="{Binding Source = {x:Static viewModel:PorEnviarViewModel.Servicio}}" FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}"                                 
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"/>
+
+                                                <Label  Grid.Column="3" HorizontalOptions="Center" Text="{Binding Source = {x:Static viewModel:PorEnviarViewModel.Autorizado}}"  FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}"                                    
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"/>
+
+                                                <Label  Grid.Column="4"  HorizontalOptions="Center" Text="{Binding Source = {x:Static viewModel:PorEnviarViewModel.Costo}}"  FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}"                                
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"/>
+
+                                                <Label  Grid.Column="5"  HorizontalOptions="Center" Text="{Binding Source = {x:Static viewModel:PorEnviarViewModel.Opcion}}"  FontSize="10" FontFamily="{StaticResource Montserrat-SemiBold}"                                
+                                   TextColor="{DynamicResource Gray-800}" VerticalOptions="Center"/>
+
+
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </controls:SearchableDataTable.HeaderTemplate>
+
+                                    <!--  List View for the table  -->
+                                    <controls:SearchableDataTable.ItemTemplate>
+                                        <DataTemplate x:Name="Info" >
+                                            <ViewCell>
+                                                <StackLayout Margin="0" Spacing="0" x:Name="Info3" BackgroundColor="white" >
+                                                    <Grid HeightRequest="48" Margin="16,0,8,0" ColumnSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="80" />
+                                                            <ColumnDefinition Width="80" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="80" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <!--  club name -->
+                                                        <Label Margin="0,0,0,0" Text="{Binding SerialNumber}"  FontSize="10" FontFamily="{StaticResource Montserrat-Medium}" 
+                                        TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+
+
+                                                        <Label Margin="0" Grid.Column="1"  Text="{Binding ClubName}" FontSize="9" FontFamily="{StaticResource Montserrat-Medium}" 
+                                        TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+
+
+                                                        <!--  Total players -->
+                                                        <Label  Grid.Column="2" Text="{Binding ProductoServicio}"  FontSize="8" FontFamily="{StaticResource Montserrat-Medium}" 
+                                        TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+
+                                                        <!--  Gold points for the club -->
+                                                        <Label  Grid.Column="3" Text="{Binding GoldPoints}"  FontSize="10" FontFamily="{StaticResource Montserrat-Medium}" 
+                                        TextColor="{Binding ColorText}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+                                                        <!--  Total points for the club -->
+                                                        <Label  Grid.Column="4" Text="{Binding Points}"  FontSize="10" FontFamily="{StaticResource Montserrat-Medium}" 
+                                        TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+
+                                                        <!--  PONER AQUI EL BOTON DE MAS OPCIONES -->
+                                                        <StackLayout  x:Name="Info4" Grid.Column="5"  VerticalOptions="Start" HorizontalOptions="Center">
+                                                            <buttons:SfButton
+                                                        x:Name="Info5"
+                                                        Margin="0,2,0,2"                                                                                                                                                                                                                             
+                                                        BindingContext="{Binding ValorBoton}"
+                                                        Text=">"                                             
+                                                        Clicked="BotonOpciones"
+                                                        BackgroundColor="{DynamicResource FacebookBlue}" 
+                                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                                        FontSize="18"      
+                                                        CornerRadius="5"
+                                                        WidthRequest="40"
+                                                        HeightRequest="40"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                    <BoxView Grid.Row="1" Grid.ColumnSpan="5" Color="Black" Style="{StaticResource SeparatorStyle}"/>
+
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </controls:SearchableDataTable.ItemTemplate>
+                                </controls:SearchableDataTable>
+
+                            </StackLayout>
+                        </Grid>
+                        <ActivityIndicator x:Name="IndicatorCarga"  IsRunning="true" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="80" Color="#0098ee"></ActivityIndicator>
+                    </StackLayout>
+                </ScrollView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

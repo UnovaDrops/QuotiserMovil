@@ -1,0 +1,189 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\avion.png" />
+    <None Remove="images\backbutton.png" />
+    <None Remove="images\bannerpanelquotiser.jpg" />
+    <None Remove="images\botonmenublanco.png" />
+    <None Remove="images\carpeta.png" />
+    <None Remove="images\editt.png" />
+    <None Remove="images\eua.png" />
+    <None Remove="images\FondoQuotiser.jpg" />
+    <None Remove="images\ImagenesLogo.png" />
+    <None Remove="images\llamar.png" />
+    <None Remove="images\lupa.png" />
+    <None Remove="images\PaymentSuccess.svg" />
+    <None Remove="images\pdfdownload.png" />
+    <None Remove="images\quotiserfondo.jpg" />
+    <None Remove="images\quotiserlogo.png" />
+    <None Remove="images\Quotiser_Logo_White.png" />
+    <None Remove="images\speed.png" />
+    <None Remove="images\WhitelogoQ.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="images\avion.png" />
+    <EmbeddedResource Include="images\backbutton.png" />
+    <EmbeddedResource Include="images\bannerpanelquotiser.jpg" />
+    <EmbeddedResource Include="images\botonmenublanco.png" />
+    <EmbeddedResource Include="images\carpeta.png" />
+    <EmbeddedResource Include="images\editt.png" />
+    <EmbeddedResource Include="images\eua.png" />
+    <EmbeddedResource Include="images\FondoQuotiser.jpg" />
+    <EmbeddedResource Include="images\ImagenesLogo.png" />
+    <EmbeddedResource Include="images\llamar.png" />
+    <EmbeddedResource Include="images\lupa.png" />
+    <EmbeddedResource Include="images\PaymentSuccess.svg" />
+    <EmbeddedResource Include="images\pdfdownload.png" />
+    <EmbeddedResource Include="images\quotiserfondo.jpg" />
+    <EmbeddedResource Include="images\quotiserlogo.png" />
+    <EmbeddedResource Include="images\Quotiser_Logo_White.png" />
+    <EmbeddedResource Include="images\speed.png" />
+    <EmbeddedResource Include="images\WhitelogoQ.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microcharts" Version="0.9.5.9" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.Pdf" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.1.0.54" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Cotizacion\CotizacionVista.xaml.cs">
+      <DependentUpon>CotizacionVista.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Panel\PanelVista.xaml.cs">
+      <DependentUpon>PanelVista.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Cotizacion\StylesCotizacion.xaml.cs">
+      <DependentUpon>StylesCotizacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Login\SeleccionarCompañiaVista.xaml.cs">
+      <DependentUpon>SeleccionarCompañiaVista.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Login\LoginVista.xaml.cs">
+      <DependentUpon>LoginVista.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PorEnviar\PorEnviarVista.xaml.cs">
+      <DependentUpon>PorEnviarVista.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PorEnviar\StylesPorEnviar.xaml.cs">
+      <DependentUpon>StylesPorEnviar.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Cotizacion\CotizacionVista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Panel\PanelVista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Cotizacion\StylesCotizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Panel\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\SeleccionarCompañiaVista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\LoginVista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PorEnviar\PorEnviarVista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PorEnviar\StylesPorEnviar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="AppShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ItemDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\NewItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserDashboard\Autorizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserDashboard\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserDashboard\DatosCotizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserDashboard\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserDashboard\StylesAutorizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserLogin\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserLogin\SelectCompañia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserLogin\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserMenu\PorEnviar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\QuotiserMenu\StylesMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="2.0.3" />
+  </ItemGroup>
+</Project>

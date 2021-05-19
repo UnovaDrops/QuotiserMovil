@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="QuotiserAppMobile.Views.Cotizacion.CotizacionVista"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:viewModel="clr-namespace:QuotiserAppMobile.ViewModels"
+    xmlns:local3="clr-namespace:ImageResourceExtension"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    x:Name="healthCarePage"
+    xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true">
+
+    <ContentPage.BindingContext>
+        <viewModel:CotizacionViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StylesCotizacion.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Grid BackgroundColor="#0098ee" HeightRequest="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <buttons:SfButton 
+                            x:Name="BackButton"
+                            Margin="15,0,0,0"
+                            Grid.Column="0"
+                            CornerRadius="0"
+                            HeightRequest="40" WidthRequest="40"
+                            Clicked="BotonDeRetroceso"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Start"                           
+                />
+
+            <Label Grid.Column="1" Text="Quotation"
+                        VerticalOptions="Center"
+                        x:Name="TituloAutorizacion"
+                        HorizontalOptions="Center"                        
+                        TextColor="White"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="14">
+            </Label>
+            <border:SfBorder BorderColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,15,5">
+                <Image HeightRequest="40" WidthRequest="40" x:Name="UserImage"></Image>
+            </border:SfBorder>
+        </Grid>
+
+        <StackLayout x:Name="MostrarDatosCotizacion" IsVisible="false">
+            <Grid
+            BackgroundColor="{DynamicResource Gray-White}"
+            RowSpacing="4"
+            Margin="10,0,10,0"
+            VerticalOptions="Start">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Header  -->
+                <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="16,16,16,12"
+                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontSize="16"
+                LineHeight="1"
+                Text="Project name - "
+                x:Name="NombreProyecto"
+                TextColor="{DynamicResource Gray-900}" />
+                <!--  Separator  -->
+                <BoxView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                HeightRequest="1"
+                Style="{StaticResource BoxViewStyle}" />
+                <!--  Contacto  -->
+                <Label
+                Grid.Row="2"
+                x:Name="ContactoTexto"
+                Margin="16,4,16,0"
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Contact :" />
+                <Label
+                Grid.Row="2"
+                Grid.Column="1"               
+                Margin="16,4,16,0"
+                FontFamily="{StaticResource Montserrat-Medium}"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="Contacto"
+                Text="---" />
+                <!--  Discount Percent  -->
+                <Label
+                Grid.Row="3"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                x:Name="TelefonoTexto"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Phone :" />
+                <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="Telefono"
+                Text="----" />
+                <!--  Coupon Discount  -->
+                <Label
+                Grid.Row="4"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                x:Name="EmpresaTexto"    
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Company :" />
+
+                <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="Empresa"
+                Text="----" />
+
+                <!--  Delivery Charges  -->
+                <Label
+                Grid.Row="5"
+                Margin="16,0,16,4"
+                x:Name="UbicacionTexto"    
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Location :" />
+                <Label
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="16,0,16,4"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="Ubicacion"
+                Text="----"
+                />
+
+                <Label
+                Grid.Row="6"
+                x:Name="TipoProductosTexto"
+                Margin="16,0,16,4"
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Products type : " />
+                <Label
+                Grid.Row="6"
+                Grid.Column="1"
+                Margin="16,0,16,4"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="TipoProductos"
+                Text="----"
+                />
+
+                <Label
+                Grid.Row="7"
+                x:Name="ProductosServiciosTexto"
+                Margin="16,0,16,4"
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Products / Services :" />
+                <Label
+                Grid.Row="7"
+                Grid.Column="1"
+                Margin="16,0,16,4"
+                FontFamily="{DynamicResource Montserrat-Medium}"
+                FontSize="12"
+                
+                HorizontalTextAlignment="End"
+                Style="{StaticResource PriceLabelStyle}"
+                x:Name="ProductosServicios"
+                Text="----"
+                />
+                <!--  Separator  -->
+                <BoxView
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                HeightRequest="1"
+                Style="{StaticResource BoxViewStyle}" />
+                <!--  Total price  -->
+                <Label
+                Grid.Row="9"
+                x:Name="CostoTotalTexto"
+                Margin="16,12,16,16"
+                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontSize="16"               
+                Style="{StaticResource PriceLabelStyle}"
+                Text="Total cost"
+                TextColor="{DynamicResource Gray-900}" />
+                <Label
+                Grid.Row="9"
+                Grid.Column="1"
+                Margin="16,12,16,16"
+                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontSize="16"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                x:Name="CostoTotal"
+               
+                Style="{StaticResource PriceLabelStyle}"
+                Text="---"
+                TextColor="{DynamicResource Gray-900}" />
+
+            </Grid>
+
+
+
+            <combobox:SfComboBox HeightRequest="40" Margin="10,0,10,0" BackgroundColor="White" DropDownBackgroundColor="White" BorderColor="White" DataSource="{Binding ListaDiseños}" Text="Select pdf format" x:Name="comboBox" SelectionChanged="ComboBox_SelectionChanged">
+
+            </combobox:SfComboBox>
+
+
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ImageButton  Grid.Column="1" x:Name="PDF" Margin="0,15,5,10" Clicked="VerPDF" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="90"  >
+                </ImageButton>
+
+                <ImageButton  Grid.Column="0" x:Name="LLAMAR" Margin="5,15,0,10" Clicked="Llamar" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="90" >
+                </ImageButton>
+            </Grid>
+
+
+
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <buttons:SfButton
+            Grid.Column="1"           
+            x:Name="EnviarBoton"
+            Margin="0,0,5,0"
+            CornerRadius="10"
+            FontFamily="{StaticResource Montserrat-SemiBold}"
+            HeightRequest="80"
+            WidthRequest="180"
+            HorizontalOptions="Center"
+            BackgroundColor="#0098ee"
+            Text="Send"
+            Clicked="BotonEnviarCotizacion"/>
+
+
+
+                <buttons:SfButton
+            Grid.Column="0"
+            x:Name="BorrarBoton"
+            Margin="5,0,0,0"
+            HeightRequest="80"
+            WidthRequest="180"
+            HorizontalOptions="Center"
+            CornerRadius="10"
+            FontFamily="{StaticResource Montserrat-SemiBold}"           
+            BackgroundColor="#0098ee"
+            Clicked="BotonDelate"
+            Text="Delete"
+            
+             />
+            </Grid>
+            <buttons:SfButton          
+            BorderWidth="10"          
+            CornerRadius="10"
+            FontFamily="{StaticResource Montserrat-SemiBold}"
+            HeightRequest="80"
+            WidthRequest="385"
+            FontSize="17"
+            HorizontalOptions="{OnIdiom Default=FillAndExpand,
+                                        Phone=CenterAndExpand,
+                                        Tablet=End}"
+            BackgroundColor="#0098ee"
+            Text="Authorize"           
+            Clicked="BotonAutorizar"
+            x:Name="AutorizarBoton"
+            />
+
+
+        </StackLayout>
+        <ActivityIndicator  Grid.Row="1" x:Name="IndicatorAutorizacion" IsRunning="False" HorizontalOptions="Center" Color="#0098ee"></ActivityIndicator>
+        <ActivityIndicator x:Name="IndicatorCarga"  IsRunning="true" HeightRequest="80" WidthRequest="80" VerticalOptions="Center" HorizontalOptions="Center" Color="#0098ee"></ActivityIndicator>
+
+
+
+
+
+
+    </StackLayout>
+
+</ContentPage>

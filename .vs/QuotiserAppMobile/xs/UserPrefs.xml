@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{F4FB3765-96E3-4773-864C-0A605831004A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="QuotiserAppMobile/Views/Panel/PanelVista.xaml">
+    <Files>
+      <File FileName="QuotiserAppMobile/Views/Panel/PanelVista.xaml" Line="87" Column="63" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="QuotiserAppMobile" expanded="True">
+            <Node name="QuotiserAppMobile" expanded="True">
+              <Node name="Views" expanded="True">
+                <Node name="Panel" expanded="True">
+                  <Node name="PanelVista.xaml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="QuotiserAppMobile.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.QuotiserAppMobile.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.224F5F81-DE26-4B99-8C99-7BC1D3F7FC7F" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.QuotiserAppMobile.Android PreferredExecutionTarget="Android.pixel_3a_xl_q_10_0_-_api_29" />
+</Properties>
